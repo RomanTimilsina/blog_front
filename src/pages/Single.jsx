@@ -49,7 +49,7 @@ const Single = () => {
             <p>posted {moment(post.date).fromNow()}</p>
           </div>
           {/* currentUser.username === post?.username && */ <div className="edit">
-            <Link to={`/write?edit=2`}>
+            <Link to={`/write?edit=2`} state={post}>
             <img src={Edit} alt="" />
             </Link>
             
