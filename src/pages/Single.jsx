@@ -38,6 +38,11 @@ const Single = () => {
     }
   }
 
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
+
   return (
     <div className='single'>
       <div className="content">
@@ -48,7 +53,7 @@ const Single = () => {
             <span>{post?.username}</span>
             <p>posted {moment(post.date).fromNow()}</p>
           </div>
-          {/* currentUser.username === post?.username && */ <div className="edit">
+          { currentUser.username === post?.username &&  <div className="edit">
             <Link to={`/write?edit=2`} state={post}>
             <img src={Edit} alt="" />
             </Link>
@@ -58,7 +63,7 @@ const Single = () => {
           </div>}
         </div>
         <h1>{post.title}</h1>
-        <p> {post.desc}</p>
+        <p> {getText(post.desc)}</p>
         
       </div>
       <div className='menu'>
