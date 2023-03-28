@@ -11,8 +11,9 @@ const Single = () => {
 
   const [post, setPosts] = useState([])
 
-
+  {console.log(post)}
   const {currentUser} =  useContext(AuthContext)
+  {console.log(currentUser)}
   const navigate = useNavigate()
 
   const postId  = useLocation().pathname.split('/')[2]
@@ -21,6 +22,7 @@ const Single = () => {
       try{
         const res = await axios.get(`/posts/${postId}`)
         setPosts(res.data)
+        
         
       }catch(err){
         console.log(err)
@@ -53,7 +55,7 @@ const Single = () => {
             <span>{post?.username}</span>
             <p>posted {moment(post.date).fromNow()}</p>
           </div>
-          { currentUser.username === post?.username &&  <div className="edit">
+          { currentUser?.username === post?.username &&  <div className="edit">
             <Link to={`/write?edit=2`} state={post}>
             <img src={Edit} alt="" />
             </Link>

@@ -22,6 +22,7 @@ const Home = () => {
       const doc = new DOMParser().parseFromString(html, "text/html")
       return doc.body.textContent
     }
+    console.log(posts)
 
      /* const posts = [
      {
@@ -54,6 +55,7 @@ const Home = () => {
     <div className='home'>
       <div className='posts'>
         {posts.map(post => (
+          
           <div className="post" key={post.id}>
             <div className="img">
               <img src={`../upload/${post.img}`} alt="" />
